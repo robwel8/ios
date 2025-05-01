@@ -1,0 +1,13 @@
+{
+	"appId": "app.epg.build",
+	"appName": "EPG",
+	"webDir": "dist",
+	"plugins": {
+		"Device": {},
+		"Haptics": {}
+	},
+	"packageClassList": [
+		"DevicePlugin",
+		"HapticsPlugin"
+	]
+}
