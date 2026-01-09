@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Earth Kingz - Fill Material Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- App Container -->
+    <div id="app">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">EARTH KINGZ</div>
+                <a href="tel:6129905690" class="phone-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    (612) 990-5690
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="app-content">
+            <!-- Home Page -->
+            <div id="home-page" class="page active">
+                <div class="hero-section">
+                    <h1>Connect Your Fill Material Needs</h1>
+                    <p class="subtitle">We match excess fill providers with those who need it</p>
+                </div>
+
+                <div class="action-cards">
+                    <div class="action-card" onclick="showPage('request-page')">
+                        <div class="card-icon">📍</div>
+                        <h3>Need Fill?</h3>
+                        <p>Request fill material for your project</p>
+                        <button class="btn btn-primary">Submit Request</button>
+                    </div>
+
+                    <div class="action-card" onclick="showPage('provide-page')">
+                        <div class="card-icon">🚛</div>
+                        <h3>Have Fill?</h3>
+                        <p>List your excess fill material</p>
+                        <button class="btn btn-primary">List Material</button>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h2>How Earth Kingz Works</h2>
+                    <div class="info-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h4>Submit Your Needs</h4>
+                            <p>Tell us what you need or what you have</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h4>We Match You</h4>
+                            <p>Our system connects the right parties</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h4>Move Material</h4>
+                            <p>Coordinate delivery and save money</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing-preview">
+                    <h2>One-Time Fee Pricing</h2>
+                    <p class="pricing-subtitle">Based on yards of fill material moved</p>
+                    <div class="pricing-quick">
+                        <div class="price-item">
+                            <div class="yards">&lt; 999 yards</div>
+                            <div class="price">$4.00/yd</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="yards">1,000 - 4,999</div>
+                            <div class="price">$3.50/yd</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="yards">30,000+</div>
+                            <div class="price">$1.00/yd</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="showPage('pricing-page')">View Full Pricing</button>
+                </div>
+            </div>
+
+            <!-- Request Fill Page -->
+            <div id="request-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="showPage('home-page')">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <h2>Request Fill Material</h2>
+                </div>
+
+                <form class="request-form" onsubmit="handleRequestSubmit(event)">
+                    <div class="form-group">
+                        <label for="job-id">Job ID / Site Location *</label>
+                        <input type="text" id="job-id" required placeholder="Enter job ID or address">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name *</label>
+                            <input type="text" id="first-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name *</label>
+                            <input type="text" id="last-name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" required placeholder="(612) 555-1234">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="yards-needed">Yards Needed *</label>
+                        <input type="number" id="yards-needed" required min="1" placeholder="e.g., 3500">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="material-type">Type of Material</label>
+                        <select id="material-type">
+                            <option value="">Select material type</option>
+                            <option value="clean-sand">Clean Sand</option>
+                            <option value="compactable-clay">Compactable Clay</option>
+                            <option value="granular-fill">Granular Fill</option>
+                            <option value="topsoil">Topsoil</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timeline">Project Timeline</label>
+                        <select id="timeline">
+                            <option value="">Select timeline</option>
+                            <option value="immediate">Immediate (1-3 days)</option>
+                            <option value="this-week">This Week</option>
+                            <option value="this-month">This Month</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" rows="4" placeholder="Any additional information..."></textarea>
+                    </div>
+
+                    <div class="estimate-preview" id="estimate-preview" style="display: none;">
+                        <h3>Estimated Cost</h3>
+                        <div class="estimate-detail">
+                            <span>Yards:</span>
+                            <span id="estimate-yards">-</span>
+                        </div>
+                        <div class="estimate-detail">
+                            <span>Rate:</span>
+                            <span id="estimate-rate">-</span>
+                        </div>
+                        <div class="estimate-total">
+                            <span>Total Estimate:</span>
+                            <span id="estimate-total">-</span>
+                        </div>
+                        <p class="estimate-note">Split 50/50 between parties</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Submit Request</button>
+                </form>
+            </div>
+
+            <!-- Provide Fill Page -->
+            <div id="provide-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="showPage('home-page')">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <h2>List Fill Material</h2>
+                </div>
+
+                <form class="request-form" onsubmit="handleProvideSubmit(event)">
+                    <div class="form-group">
+                        <label for="provide-job-id">Site Location *</label>
+                        <input type="text" id="provide-job-id" required placeholder="Enter address or job site">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="provide-first-name">First Name *</label>
+                            <input type="text" id="provide-first-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="provide-last-name">Last Name *</label>
+                            <input type="text" id="provide-last-name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="provide-email">Email *</label>
+                        <input type="email" id="provide-email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="provide-phone">Phone *</label>
+                        <input type="tel" id="provide-phone" required placeholder="(612) 555-1234">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="yards-available">Yards Available *</label>
+                        <input type="number" id="yards-available" required min="1" placeholder="e.g., 4200">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="provide-material-type">Type of Material *</label>
+                        <select id="provide-material-type" required>
+                            <option value="">Select material type</option>
+                            <option value="clean-sand">Clean Sand</option>
+                            <option value="compactable-clay">Compactable Clay</option>
+                            <option value="granular-fill">Granular Fill</option>
+                            <option value="topsoil">Topsoil</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="provide-timeline">Availability</label>
+                        <select id="provide-timeline">
+                            <option value="">Select availability</option>
+                            <option value="immediate">Available Now</option>
+                            <option value="this-week">Available This Week</option>
+                            <option value="this-month">Available This Month</option>
+                            <option value="ongoing">Ongoing Availability</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="provide-notes">Additional Details</label>
+                        <textarea id="provide-notes" rows="4" placeholder="Material condition, access details, etc..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">List Material</button>
+                </form>
+            </div>
+
+            <!-- Map Page -->
+            <div id="map-page" class="page">
+                <div class="page-header">
+                    <h2>Active Requests</h2>
+                    <div class="map-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="need">Need Fill</button>
+                        <button class="filter-btn" data-filter="have">Have Fill</button>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <div id="map-placeholder" class="map-placeholder">
+                        <p>📍 Interactive Map Coming Soon</p>
+                        <p class="map-note">Will show active fill requests and available materials in your area</p>
+                    </div>
+                </div>
+
+                <div class="nearby-list">
+                    <h3>Nearby Opportunities</h3>
+                    <div class="opportunity-item">
+                        <div class="opportunity-icon need">📍</div>
+                        <div class="opportunity-info">
+                            <h4>Need 3,500 yards - Compactable Clay</h4>
+                            <p>Princeton, MN • This Week</p>
+                        </div>
+                        <div class="opportunity-distance">2.3 mi</div>
+                    </div>
+                    <div class="opportunity-item">
+                        <div class="opportunity-icon have">🚛</div>
+                        <div class="opportunity-info">
+                            <h4>Have 4,200 yards - Clean Sand</h4>
+                            <p>St. Paul, MN • Available Now</p>
+                        </div>
+                        <div class="opportunity-distance">5.1 mi</div>
+                    </div>
+                    <div class="opportunity-item">
+                        <div class="opportunity-icon need">📍</div>
+                        <div class="opportunity-info">
+                            <h4>Need 15,000 yards - Granular Fill</h4>
+                            <p>Zimmerman, MN • This Month</p>
+                        </div>
+                        <div class="opportunity-distance">8.7 mi</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Page -->
+            <div id="pricing-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="showPage('home-page')">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <h2>Pricing</h2>
+                </div>
+
+                <div class="pricing-content">
+                    <div class="pricing-header">
+                        <h3>One-Time Service Fee</h3>
+                        <p>Based on yards of fill material moved</p>
+                    </div>
+
+                    <div class="pricing-table">
+                        <div class="pricing-row header">
+                            <div>Yards</div>
+                            <div>Per Yard Price</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div>&lt; 999</div>
+                            <div class="price-value">$4.00</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div>1,000 - 4,999</div>
+                            <div class="price-value">$3.50</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div>5,000 - 9,999</div>
+                            <div class="price-value">$3.00</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div>10,000 - 19,999</div>
+                            <div class="price-value">$2.50</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div>20,000 - 29,999</div>
+                            <div class="price-value">$2.00</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div>30,000+</div>
+                            <div class="price-value">$1.00</div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-calculator">
+                        <h3>Calculate Your Cost</h3>
+                        <div class="form-group">
+                            <label for="calc-yards">Yards of Material</label>
+                            <input type="number" id="calc-yards" min="1" placeholder="Enter yards" oninput="calculatePrice()">
+                        </div>
+                        <div class="calc-result" id="calc-result" style="display: none;">
+                            <div class="calc-row">
+                                <span>Total Cost:</span>
+                                <span class="calc-total" id="calc-total">$0.00</span>
+                            </div>
+                            <div class="calc-row">
+                                <span>Your Share (50%):</span>
+                                <span class="calc-share" id="calc-share">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-notes">
+                        <h4>How It Works</h4>
+                        <ul>
+                            <li>No subscription fees or ongoing charges</li>
+                            <li>Cost is split 50/50 between material provider and receiver</li>
+                            <li>Each party pays only $1.75/yard (for 1,000-4,999 yard jobs)</li>
+                            <li>Additional fees may apply for permits or special services</li>
+                            <li>Final cost based on actual yards moved</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile/More Page -->
+            <div id="profile-page" class="page">
+                <div class="page-header">
+                    <h2>More</h2>
+                </div>
+
+                <div class="profile-content">
+                    <div class="profile-section">
+                        <h3>About Earth Kingz</h3>
+                        <p>We connect contractors, farmers, and property owners who need fill material with those who have excess material to move.</p>
+                        <p>Our mission is to reduce waste, save money, and make construction projects more efficient.</p>
+                    </div>
+
+                    <div class="menu-list">
+                        <div class="menu-item">
+                            <span>My Requests</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </div>
+                        <div class="menu-item">
+                            <span>My Listings</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </div>
+                        <div class="menu-item">
+                            <span>Transaction History</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </div>
+                        <div class="menu-item">
+                            <span>Payment Methods</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="menu-list">
+                        <div class="menu-item">
+                            <span>Help & Support</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </div>
+                        <div class="menu-item">
+                            <span>Terms of Service</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </div>
+                        <div class="menu-item">
+                            <span>Privacy Policy</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="contact-section">
+                        <h3>Contact Us</h3>
+                        <p><strong>Phone:</strong> <a href="tel:6129905690">(612) 990-5690</a></p>
+                        <p><strong>Email:</strong> info@earthkingz.com</p>
+                    </div>
+
+                    <div class="app-version">
+                        <p>Version 1.0.0 (Mock)</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" onclick="navigateTo('home-page', this)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" onclick="navigateTo('map-page', this)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Map</span>
+            </button>
+            <button class="nav-item nav-add" onclick="showPage('request-page')">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+            </button>
+            <button class="nav-item" onclick="navigateTo('pricing-page', this)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                <span>Pricing</span>
+            </button>
+            <button class="nav-item" onclick="navigateTo('profile-page', this)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>More</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <div class="success-icon">✓</div>
+            <h2>Request Submitted!</h2>
+            <p>We'll match you with the right party and contact you soon.</p>
+            <button class="btn btn-primary" onclick="closeModal()">Got it</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
